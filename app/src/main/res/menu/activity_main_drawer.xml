@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_feed"
+            android:icon="@mipmap/ic_feed_36dp"
+            android:title="Feed" />
+        <item
+            android:id="@+id/nav_read_list"
+            android:icon="@mipmap/ic_read_list_36dp"
+            android:title="Read List" />
+    </group>
+
+    <group
+        android:id="@+id/nav_group_tools"
+        android:checkableBehavior="none">
+        <item
+            android:id="@+id/nav_settings"
+            android:icon="@mipmap/ic_settings_36dp"
+            android:title="Settings" />
+    </group>
+
+
+</menu>
