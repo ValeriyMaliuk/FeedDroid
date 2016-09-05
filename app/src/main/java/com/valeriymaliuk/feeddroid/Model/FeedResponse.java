@@ -20,4 +20,14 @@ public class FeedResponse {
 
     @SerializedName("results")
     private List<News> results;
+
+    @Override
+    public String toString() {
+        return "FeedResponse{" +
+                "status='" + status + '\'' +
+                ", orderBy='" + orderBy + '\'' +
+                ", currentPage=" + currentPage +
+                ", results=" + results +
+                '}';
+    }
 }

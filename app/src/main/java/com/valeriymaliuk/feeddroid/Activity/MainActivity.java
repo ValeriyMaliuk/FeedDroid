@@ -9,15 +9,26 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.valeriymaliuk.feeddroid.API.TheGuardianService;
 import com.valeriymaliuk.feeddroid.Fragment.FeedFragment;
 import com.valeriymaliuk.feeddroid.Fragment.ReadListFragment;
+import com.valeriymaliuk.feeddroid.Model.FeedResponse;
 import com.valeriymaliuk.feeddroid.R;
+
+import java.io.IOException;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+    private static final String TAG = "TARAS(" + "MainActivity" + ")";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +45,24 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        TheGuardianService theGuardianService =
+                TheGuardianService.retrofit.create(TheGuardianService.class);
+        Call<FeedResponse> call = theGuardianService.search("8ea17292-d12f-4847-ab05-64976f5f405f");
+        FeedResponse result = null;
+        call.enqueue(new Callback<FeedResponse>() {
+            @Override
+            public void onResponse(Call<FeedResponse> call, Response<FeedResponse> response) {
+
+                Log.d(TAG,response.body().toString());
+            }
+
+            @Override
+            public void onFailure(Call<FeedResponse> call, Throwable t) {
+
+            }
+        });
+
     }
 
     @Override
