@@ -46,23 +46,10 @@ public class MainActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        TheGuardianService theGuardianService =
-                TheGuardianService.retrofit.create(TheGuardianService.class);
-        Call<FeedResponse> call = theGuardianService.search("8ea17292-d12f-4847-ab05-64976f5f405f");
-        FeedResponse result = null;
-        call.enqueue(new Callback<FeedResponse>() {
-            @Override
-            public void onResponse(Call<FeedResponse> call, Response<FeedResponse> response) {
-
-                Log.d(TAG,response.body().toString());
-            }
-
-            @Override
-            public void onFailure(Call<FeedResponse> call, Throwable t) {
-
-            }
-        });
-
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        fragmentManager.beginTransaction()
+                .replace(R.id.main_container, new FeedFragment())
+                .commit();
     }
 
     @Override
@@ -105,7 +92,7 @@ public class MainActivity extends AppCompatActivity
         Fragment fragment = null;
 
         if (id == R.id.nav_feed) {
-            fragment = FeedFragment.newInstance("", "");
+            fragment = new FeedFragment();
         } else if (id == R.id.nav_read_list) {
             fragment = ReadListFragment.newInstance("","");
         } else if (id == R.id.nav_settings) {
