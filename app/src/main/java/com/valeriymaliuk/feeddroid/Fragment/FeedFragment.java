@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 
 import com.valeriymaliuk.feeddroid.Model.News;
 import com.valeriymaliuk.feeddroid.R;
@@ -17,6 +18,8 @@ public class FeedFragment extends Fragment implements FeedView{
     private static final String ARG_NEWS_LIST = "news_list";
 
     private List<News> mNewsList;
+    private ProgressBar mProgressBar;
+    private FeedPresenter mFeedPresenter;
 
     public FeedFragment() {
         // Required empty public constructor
@@ -42,17 +45,10 @@ public class FeedFragment extends Fragment implements FeedView{
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_feed, container, false);
-    }
-
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-    }
-
-    @Override
-    public void onDetach() {
-        super.onDetach();
+        View v =  inflater.inflate(R.layout.fragment_feed, container, false);
+        initViews(v);
+        mFeedPresenter = new FeedPresenterImp(this, new FeedNetworkInteractorImp());
+        return v;
     }
 
     @Override
@@ -67,11 +63,31 @@ public class FeedFragment extends Fragment implements FeedView{
 
     @Override
     public void setItems(List<News> items) {
-
+        //TODO: show items in RecyclerView
     }
 
     @Override
     public void showMessage(String message) {
 
+    }
+
+    private void initViews(View view){
+        mProgressBar = (ProgressBar) view.findViewById(R.id.progressBar);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        mFeedPresenter.onResume();
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
     }
 }
