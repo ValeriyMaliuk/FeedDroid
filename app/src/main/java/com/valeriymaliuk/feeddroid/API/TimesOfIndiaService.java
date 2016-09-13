@@ -13,15 +13,15 @@ import retrofit2.http.Query;
 /**
  * Created by taras on 4/09/2016.
  */
-public interface TheGuardianService {
+public interface TimesOfIndiaService {
 
-    @GET("search")
+    @GET("feeds/newsdefaultfeeds.cms")
     Call<FeedResponse> search(
-            @Query("api-key") String key);
+            @Query("feedtype") String key);
 
 
     public static final Retrofit retrofit = new Retrofit.Builder()
-            .baseUrl("https://content.guardianapis.com/")
+            .baseUrl("http://timesofindia.indiatimes.com/")
             .addConverterFactory(GsonConverterFactory.create())
             .build();
 

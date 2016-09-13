@@ -9,21 +9,12 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.valeriymaliuk.feeddroid.API.TheGuardianService;
 import com.valeriymaliuk.feeddroid.Fragment.FeedFragment;
 import com.valeriymaliuk.feeddroid.Fragment.ReadListFragment;
-import com.valeriymaliuk.feeddroid.Model.FeedResponse;
 import com.valeriymaliuk.feeddroid.R;
-
-import java.io.IOException;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {

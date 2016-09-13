@@ -53,12 +53,12 @@ public class FeedFragment extends Fragment implements FeedView{
 
     @Override
     public void showProgress() {
-
+        mProgressBar.setVisibility(View.VISIBLE);
     }
 
     @Override
     public void hideProgress() {
-
+        mProgressBar.setVisibility(View.INVISIBLE);
     }
 
     @Override

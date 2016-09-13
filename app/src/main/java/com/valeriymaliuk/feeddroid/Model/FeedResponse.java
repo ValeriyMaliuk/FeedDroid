@@ -2,32 +2,41 @@ package com.valeriymaliuk.feeddroid.Model;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
  * Created by taras on 4/09/2016.
  */
-public class FeedResponse {
+public class FeedResponse  implements Serializable{
 
-    @SerializedName("status")
-    private String status;
+    @SerializedName("Pagination")
+    FeedPagination pagination;
 
-    @SerializedName("orderBy")
-    private String orderBy;
+    @SerializedName("NewsItem")
+    List<News> newsList;
 
-    @SerializedName("currentPage")
-    private int currentPage;
+    public FeedPagination getPagination() {
+        return pagination;
+    }
 
-    @SerializedName("results")
-    private List<News> results;
+    public void setPagination(FeedPagination pagination) {
+        this.pagination = pagination;
+    }
+
+    public List<News> getNewsList() {
+        return newsList;
+    }
+
+    public void setNewsList(List<News> newsList) {
+        this.newsList = newsList;
+    }
 
     @Override
     public String toString() {
         return "FeedResponse{" +
-                "status='" + status + '\'' +
-                ", orderBy='" + orderBy + '\'' +
-                ", currentPage=" + currentPage +
-                ", results=" + results +
+                "pagination=" + pagination +
+                ", newsList=" + newsList +
                 '}';
     }
 }

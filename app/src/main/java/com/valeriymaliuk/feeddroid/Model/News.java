@@ -7,93 +7,150 @@ import java.io.Serializable;
 /**
  * Created by taras on 5/09/2016.
  */
-public class News implements Serializable{
+public class News implements Serializable {
 
-    @SerializedName("id")
-    private String id;
+    @SerializedName("NewsItemId")
+    String newsItemId;
 
-    @SerializedName("type")
-    private String type;
+    @SerializedName("HeadLine")
+    String headLine;
 
-    @SerializedName("sectionId")
-    private String sectionId;
+    @SerializedName("ByLine")
+    String byLine;
 
-    @SerializedName("sectionName")
-    private String sectionName;
+    @SerializedName("Agency")
+    String agency;
 
-    @SerializedName("webPublicationDate")
-    private String publicationDate;
+    @SerializedName("DateLine")
+    String dateLine;
 
-    @SerializedName("webTitle")
-    private String title;
+    @SerializedName("WebURL")
+    String newsURL;
 
-    @SerializedName("webUrl")
-    private String webUrl;
+    @SerializedName("Caption")
+    String caption;
 
-    @SerializedName("apiUrl")
-    private String apiUrl;
+    @SerializedName("Keywords")
+    String keywords;
 
-    public String getId() {
-        return id;
+    @SerializedName("Story")
+    String story;
+
+    @SerializedName("CommentCountUrl")
+    String commentCountURL;
+
+    @SerializedName("CommentFeedUrl")
+    String commentFeedURL;
+
+    @SerializedName("Related")
+    String relatedNewsURL;
+
+    @SerializedName("Image")
+    NewsImage newsImage;
+
+    public String getNewsItemId() {
+        return newsItemId;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setNewsItemId(String newsItemId) {
+        this.newsItemId = newsItemId;
     }
 
-    public String getType() {
-        return type;
+    public String getHeadLine() {
+        return headLine;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public void setHeadLine(String headLine) {
+        this.headLine = headLine;
     }
 
-    public String getSectionId() {
-        return sectionId;
+    public String getByLine() {
+        return byLine;
     }
 
-    public void setSectionId(String sectionId) {
-        this.sectionId = sectionId;
+    public void setByLine(String byLine) {
+        this.byLine = byLine;
     }
 
-    public String getSectionName() {
-        return sectionName;
+    public String getAgency() {
+        return agency;
     }
 
-    public void setSectionName(String sectionName) {
-        this.sectionName = sectionName;
+    public void setAgency(String agency) {
+        this.agency = agency;
     }
 
-    public String getPublicationDate() {
-        return publicationDate;
+    public String getDateLine() {
+        return dateLine;
     }
 
-    public void setPublicationDate(String publicationDate) {
-        this.publicationDate = publicationDate;
+    public void setDateLine(String dateLine) {
+        this.dateLine = dateLine;
     }
 
-    public String getTitle() {
-        return title;
+    public String getNewsURL() {
+        return newsURL;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setNewsURL(String newsURL) {
+        this.newsURL = newsURL;
     }
 
-    public String getWebUrl() {
-        return webUrl;
+    public String getCaption() {
+        return caption;
     }
 
-    public void setWebUrl(String webUrl) {
-        this.webUrl = webUrl;
+    public void setCaption(String caption) {
+        this.caption = caption;
     }
 
-    public String getApiUrl() {
-        return apiUrl;
+    public String getKeywords() {
+        return keywords;
     }
 
-    public void setApiUrl(String apiUrl) {
-        this.apiUrl = apiUrl;
+    public void setKeywords(String keywords) {
+        this.keywords = keywords;
     }
+
+    public String getStory() {
+        return story;
+    }
+
+    public void setStory(String story) {
+        this.story = story;
+    }
+
+    public String getCommentCountURL() {
+        return commentCountURL;
+    }
+
+    public void setCommentCountURL(String commentCountURL) {
+        this.commentCountURL = commentCountURL;
+    }
+
+    public String getCommentFeedURL() {
+        return commentFeedURL;
+    }
+
+    public void setCommentFeedURL(String commentFeedURL) {
+        this.commentFeedURL = commentFeedURL;
+    }
+
+    public String getRelatedNewsURL() {
+        return relatedNewsURL;
+    }
+
+    public void setRelatedNewsURL(String relatedNewsURL) {
+        this.relatedNewsURL = relatedNewsURL;
+    }
+
+    public NewsImage getNewsImage() {
+        return newsImage;
+    }
+
+    public void setNewsImage(NewsImage newsImage) {
+        this.newsImage = newsImage;
+    }
+
+
 }
