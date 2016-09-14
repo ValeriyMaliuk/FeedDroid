@@ -1,4 +1,4 @@
-package com.valeriymaliuk.feeddroid.Fragment;
+package com.valeriymaliuk.feeddroid.fragment;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -10,10 +10,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
 
-import com.valeriymaliuk.feeddroid.Adapter.FeedAdapter;
-import com.valeriymaliuk.feeddroid.Model.News;
+import com.valeriymaliuk.feeddroid.adapter.FeedAdapter;
+import com.valeriymaliuk.feeddroid.model.News;
 import com.valeriymaliuk.feeddroid.R;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -73,9 +74,9 @@ public class FeedFragment extends Fragment implements FeedView{
 
     @Override
     public void setItems(List<News> items) {
-        //TODO: show items in RecyclerView
-        mFeedAdapter = new FeedAdapter(items, getContext());
-        mRecyclerView.setAdapter(mFeedAdapter);
+        mNewsList.clear();
+        mNewsList.addAll(items);
+        mFeedAdapter.notifyDataSetChanged();
     }
 
     @Override
@@ -89,6 +90,11 @@ public class FeedFragment extends Fragment implements FeedView{
         mRecyclerView.setHasFixedSize(true);
         mLayoutManager = new LinearLayoutManager(getContext());
         mRecyclerView.setLayoutManager(mLayoutManager);
+
+        //init recyclerView and adapter
+        mNewsList = new ArrayList<>();
+        mFeedAdapter = new FeedAdapter(mNewsList, getContext());
+        mRecyclerView.setAdapter(mFeedAdapter);
     }
 
     @Override

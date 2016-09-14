@@ -1,4 +1,4 @@
-package com.valeriymaliuk.feeddroid.Activity;
+package com.valeriymaliuk.feeddroid.activity;
 
 import android.support.v4.app.FragmentManager;
 import android.os.Bundle;
@@ -12,8 +12,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.valeriymaliuk.feeddroid.Fragment.FeedFragment;
-import com.valeriymaliuk.feeddroid.Fragment.ReadListFragment;
+import com.valeriymaliuk.feeddroid.fragment.FeedFragment;
+import com.valeriymaliuk.feeddroid.fragment.ReadListFragment;
 import com.valeriymaliuk.feeddroid.R;
 
 public class MainActivity extends AppCompatActivity

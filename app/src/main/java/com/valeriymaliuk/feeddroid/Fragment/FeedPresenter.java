@@ -1,4 +1,4 @@
-package com.valeriymaliuk.feeddroid.Fragment;
+package com.valeriymaliuk.feeddroid.fragment;
 
 /**
  * Created by taras on 9/09/2016.

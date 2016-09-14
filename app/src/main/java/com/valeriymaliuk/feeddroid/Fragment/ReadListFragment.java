@@ -1,4 +1,4 @@
-package com.valeriymaliuk.feeddroid.Fragment;
+package com.valeriymaliuk.feeddroid.fragment;
 
 import android.content.Context;
 import android.net.Uri;

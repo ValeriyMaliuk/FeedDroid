@@ -76,7 +76,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="@dimen/news_item_btn_see_more_height"
                     android:layout_gravity="bottom|end"
-                    android:text="See More"
+                    android:text="Read story"
+                    android:id="@+id/btn_read_full_news"
                     android:textColor="@color/news_item_btn_see_more_text_color"
                     style="?android:attr/borderlessButtonStyle" />
             </FrameLayout>

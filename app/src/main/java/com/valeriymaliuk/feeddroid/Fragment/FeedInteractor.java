@@ -1,6 +1,6 @@
-package com.valeriymaliuk.feeddroid.Fragment;
+package com.valeriymaliuk.feeddroid.fragment;
 
-import com.valeriymaliuk.feeddroid.Model.News;
+import com.valeriymaliuk.feeddroid.model.News;
 
 import java.util.List;
 

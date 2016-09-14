@@ -1,4 +1,4 @@
-package com.valeriymaliuk.feeddroid.Model;
+package com.valeriymaliuk.feeddroid.model;
 
 import com.google.gson.annotations.SerializedName;
 

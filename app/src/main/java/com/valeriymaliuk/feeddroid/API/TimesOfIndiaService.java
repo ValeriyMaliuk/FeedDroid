@@ -1,13 +1,12 @@
-package com.valeriymaliuk.feeddroid.API;
+package com.valeriymaliuk.feeddroid.api;
 
-import com.valeriymaliuk.feeddroid.Model.FeedResponse;
+import com.valeriymaliuk.feeddroid.model.FeedResponse;
+import com.valeriymaliuk.feeddroid.util.Constants;
 
 import retrofit2.Call;
-import retrofit2.Callback;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.http.GET;
-import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 /**
@@ -15,13 +14,13 @@ import retrofit2.http.Query;
  */
 public interface TimesOfIndiaService {
 
-    @GET("feeds/newsdefaultfeeds.cms")
+    @GET(Constants.URL_NEWS_DEFAULT_FEED)
     Call<FeedResponse> search(
-            @Query("feedtype") String key);
+            @Query(Constants.PARAM_FEED_TYPE) String key);
 
 
     public static final Retrofit retrofit = new Retrofit.Builder()
-            .baseUrl("http://timesofindia.indiatimes.com/")
+            .baseUrl(Constants.URL_DOMAIN_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .build();
 
