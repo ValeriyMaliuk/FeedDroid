@@ -6,4 +6,17 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
+
+    <dimen name="news_item_landscape_card_width">500dp</dimen>
+    <dimen name="news_item_cardview_height">300dp</dimen>
+    <dimen name="news_item_text_left_right_padding">6dp</dimen>
+    <dimen name="news_item_text_top_padding">8dp</dimen>
+    <dimen name="news_item_image_height">200dp</dimen>
+    <dimen name="news_item_header_text_size">25sp</dimen>
+    <dimen name="news_item_date_text_bottom_margin">8dp</dimen>
+    <dimen name="news_item_btn_see_more_height">36dp</dimen>
+    <dimen name="news_item_root_layout_left_right_padding">2dp</dimen>
+    <dimen name="news_item_card_view_corner_radius">4dp</dimen>
+    <dimen name="news_item_card_view_elevation">3dp</dimen>
+    <dimen name="news_item_header_layout_padding">8dp</dimen>
 </resources>

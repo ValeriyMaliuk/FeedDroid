@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingLeft="@dimen/news_item_root_layout_left_right_padding"
+    android:paddingRight="@dimen/news_item_root_layout_left_right_padding">
+
+    <android.support.v7.widget.CardView
+        xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/card_view"
+
+        android:layout_gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/news_item_cardview_height"
+        card_view:cardCornerRadius="@dimen/news_item_card_view_corner_radius"
+        card_view:cardElevation="@dimen/news_item_card_view_elevation"
+        card_view:cardUseCompatPadding="true">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/iv_poster"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/news_item_image_height"
+                    android:scaleType="centerCrop"/>
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:padding="@dimen/news_item_header_layout_padding"
+                    android:background="@android:drawable/screen_background_dark_transparent">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="HeadLine"
+                        android:fontFamily="sans-serif-light"
+                        android:textSize="@dimen/news_item_header_text_size"
+                        android:textColor="@android:color/white"
+                        android:id="@+id/tv_headline" />
+                </FrameLayout>
+            </FrameLayout>
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingLeft="@dimen/news_item_text_left_right_padding"
+                android:paddingRight="@dimen/news_item_text_left_right_padding"
+                android:paddingTop="@dimen/news_item_text_top_padding">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:lines="2"
+                    android:scrollHorizontally="true"
+                    android:text="caption"
+                    android:fontFamily="sans-serif-condensed"
+                    android:textColor="@color/material_grey_800"
+                    android:id="@+id/tv_caption" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:layout_marginBottom="@dimen/news_item_date_text_bottom_margin"
+                    android:text="Date"
+                    android:id="@+id/tv_date" />
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/news_item_btn_see_more_height"
+                    android:layout_gravity="bottom|end"
+                    android:text="See More"
+                    android:textColor="@color/news_item_btn_see_more_text_color"
+                    style="?android:attr/borderlessButtonStyle" />
+            </FrameLayout>
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
+</LinearLayout>

@@ -3,11 +3,14 @@ package com.valeriymaliuk.feeddroid.Fragment;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
 
+import com.valeriymaliuk.feeddroid.Adapter.FeedAdapter;
 import com.valeriymaliuk.feeddroid.Model.News;
 import com.valeriymaliuk.feeddroid.R;
 
@@ -20,6 +23,11 @@ public class FeedFragment extends Fragment implements FeedView{
     private List<News> mNewsList;
     private ProgressBar mProgressBar;
     private FeedPresenter mFeedPresenter;
+
+    private RecyclerView mRecyclerView;
+    private FeedAdapter mFeedAdapter;
+    private RecyclerView.LayoutManager mLayoutManager;
+
 
     public FeedFragment() {
         // Required empty public constructor
@@ -37,6 +45,7 @@ public class FeedFragment extends Fragment implements FeedView{
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
+            //TODO:save newsList while changing device orientation
 //            mNewsList = getArguments().getSerializable(ARG_NEWS_LIST);
         }
     }
@@ -48,6 +57,7 @@ public class FeedFragment extends Fragment implements FeedView{
         View v =  inflater.inflate(R.layout.fragment_feed, container, false);
         initViews(v);
         mFeedPresenter = new FeedPresenterImp(this, new FeedNetworkInteractorImp());
+
         return v;
     }
 
@@ -64,6 +74,8 @@ public class FeedFragment extends Fragment implements FeedView{
     @Override
     public void setItems(List<News> items) {
         //TODO: show items in RecyclerView
+        mFeedAdapter = new FeedAdapter(items, getContext());
+        mRecyclerView.setAdapter(mFeedAdapter);
     }
 
     @Override
@@ -72,7 +84,11 @@ public class FeedFragment extends Fragment implements FeedView{
     }
 
     private void initViews(View view){
-        mProgressBar = (ProgressBar) view.findViewById(R.id.progressBar);
+        mProgressBar  = (ProgressBar)  view.findViewById(R.id.progressBar);
+        mRecyclerView = (RecyclerView) view.findViewById(R.id.feed_recycler_view);
+        mRecyclerView.setHasFixedSize(true);
+        mLayoutManager = new LinearLayoutManager(getContext());
+        mRecyclerView.setLayoutManager(mLayoutManager);
     }
 
     @Override

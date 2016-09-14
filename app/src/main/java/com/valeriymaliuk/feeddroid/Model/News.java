@@ -3,6 +3,10 @@ package com.valeriymaliuk.feeddroid.Model;
 import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 
 /**
  * Created by taras on 5/09/2016.
@@ -150,6 +154,21 @@ public class News implements Serializable {
 
     public void setNewsImage(NewsImage newsImage) {
         this.newsImage = newsImage;
+    }
+
+    public String getFormattedDate(){
+        String formattedDate = "";
+        if(this.dateLine != null){
+            SimpleDateFormat formatDefault = new SimpleDateFormat("MMM dd, yyyy, hh.mma", Locale.US);
+            SimpleDateFormat formatApp     = new SimpleDateFormat("MMM dd, HH:mm", Locale.US);
+            try {
+                Date parsed   = formatDefault.parse(this.dateLine );
+                formattedDate = formatApp.format(parsed);
+            }
+            catch(ParseException pe) { }
+        }
+
+        return formattedDate;
     }
 
 
