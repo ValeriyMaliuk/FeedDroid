@@ -11,8 +11,11 @@ import android.view.ViewGroup;
 import android.widget.ProgressBar;
 
 import com.valeriymaliuk.feeddroid.adapter.FeedAdapter;
+import com.valeriymaliuk.feeddroid.interactor.FeedNetworkInteractorImp;
 import com.valeriymaliuk.feeddroid.model.News;
 import com.valeriymaliuk.feeddroid.R;
+import com.valeriymaliuk.feeddroid.presenter.FeedPresenter;
+import com.valeriymaliuk.feeddroid.presenter.FeedPresenterImp;
 
 import java.util.ArrayList;
 import java.util.List;

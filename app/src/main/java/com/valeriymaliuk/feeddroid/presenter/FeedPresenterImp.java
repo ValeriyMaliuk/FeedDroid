@@ -1,5 +1,7 @@
-package com.valeriymaliuk.feeddroid.fragment;
+package com.valeriymaliuk.feeddroid.presenter;
 
+import com.valeriymaliuk.feeddroid.interactor.FeedInteractor;
+import com.valeriymaliuk.feeddroid.fragment.FeedView;
 import com.valeriymaliuk.feeddroid.model.News;
 
 import java.util.List;
