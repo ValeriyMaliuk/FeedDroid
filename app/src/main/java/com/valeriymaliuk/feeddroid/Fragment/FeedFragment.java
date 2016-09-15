@@ -3,23 +3,33 @@ package com.valeriymaliuk.feeddroid.fragment;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.LoaderManager;
+import android.support.v4.content.Loader;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
 
 import com.valeriymaliuk.feeddroid.adapter.FeedAdapter;
+import com.valeriymaliuk.feeddroid.interactor.FeedNetworkInteractorImp;
 import com.valeriymaliuk.feeddroid.model.News;
 import com.valeriymaliuk.feeddroid.R;
+import com.valeriymaliuk.feeddroid.presenter.FeedPresenter;
+import com.valeriymaliuk.feeddroid.presenter.FeedPresenterImp;
+import com.valeriymaliuk.feeddroid.util.FeedPresenterFactory;
+import com.valeriymaliuk.feeddroid.util.PresenterFactory;
+import com.valeriymaliuk.feeddroid.util.PresenterLoader;
 
 import java.util.ArrayList;
 import java.util.List;
 
 
-public class FeedFragment extends Fragment implements FeedView{
-    private static final String ARG_NEWS_LIST = "news_list";
+public class FeedFragment extends Fragment implements FeedView, LoaderManager.LoaderCallbacks<FeedPresenter> {
+    private static final String TAG = "FeedFragment";
+    private static final int LOADER_ID = 911;
 
     private List<News> mNewsList;
     private ProgressBar mProgressBar;
@@ -34,30 +44,18 @@ public class FeedFragment extends Fragment implements FeedView{
         // Required empty public constructor
     }
 
-    public static FeedFragment newInstance(List<News> newsList) {
-        FeedFragment fragment = new FeedFragment();
-        Bundle args = new Bundle();
-//        args.putString(ARG_NEWS_LIST, newsList);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            //TODO:save newsList while changing device orientation
-//            mNewsList = getArguments().getSerializable(ARG_NEWS_LIST);
-        }
+        if (getArguments() != null) { }
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         View v =  inflater.inflate(R.layout.fragment_feed, container, false);
         initViews(v);
-        mFeedPresenter = new FeedPresenterImp(this, new FeedNetworkInteractorImp());
 
         return v;
     }
@@ -77,6 +75,7 @@ public class FeedFragment extends Fragment implements FeedView{
         mNewsList.clear();
         mNewsList.addAll(items);
         mFeedAdapter.notifyDataSetChanged();
+        mRecyclerView.setVisibility(View.VISIBLE);
     }
 
     @Override
@@ -100,8 +99,11 @@ public class FeedFragment extends Fragment implements FeedView{
     @Override
     public void onResume() {
         super.onResume();
+        getLoaderManager().initLoader(LOADER_ID,null,this);
+        Log.d(TAG, mFeedPresenter.toString());
         mFeedPresenter.onResume();
     }
+
 
     @Override
     public void onAttach(Context context) {
@@ -111,5 +113,26 @@ public class FeedFragment extends Fragment implements FeedView{
     @Override
     public void onDetach() {
         super.onDetach();
+    }
+
+    /*
+    * Loader callbacks to handle binding of presenter after orientation changed
+     */
+    @Override
+    public Loader<FeedPresenter> onCreateLoader(int id, Bundle args) {
+        Log.d(TAG,"create Loader");
+        return new PresenterLoader<>(getContext(), new FeedPresenterFactory(this, new FeedNetworkInteractorImp()));
+    }
+
+    @Override
+    public void onLoadFinished(Loader<FeedPresenter> loader, FeedPresenter presenter) {
+        Log.d(TAG,"load finished");
+        this.mFeedPresenter = presenter;
+    }
+
+    @Override
+    public void onLoaderReset(Loader<FeedPresenter> loader) {
+        Log.d(TAG,"loader reset");
+        this.mFeedPresenter = null;
     }
 }

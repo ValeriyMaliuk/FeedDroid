@@ -1,5 +1,7 @@
-package com.valeriymaliuk.feeddroid.fragment;
+package com.valeriymaliuk.feeddroid.presenter;
 
+import com.valeriymaliuk.feeddroid.interactor.FeedInteractor;
+import com.valeriymaliuk.feeddroid.fragment.FeedView;
 import com.valeriymaliuk.feeddroid.model.News;
 
 import java.util.List;
@@ -46,8 +48,8 @@ public class FeedPresenterImp implements FeedPresenter, FeedInteractor.OnInterac
     @Override
     public void onSuccess(List<News> newsList) {
         if (mFeedView != null){
-            mFeedView.setItems(newsList);
             mFeedView.hideProgress();
+            mFeedView.setItems(newsList);
         }
     }
 

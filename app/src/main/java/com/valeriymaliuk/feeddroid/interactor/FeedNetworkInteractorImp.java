@@ -1,4 +1,4 @@
-package com.valeriymaliuk.feeddroid.fragment;
+package com.valeriymaliuk.feeddroid.interactor;
 
 import android.util.Log;
 

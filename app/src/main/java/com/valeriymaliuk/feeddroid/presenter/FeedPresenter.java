@@ -1,4 +1,4 @@
-package com.valeriymaliuk.feeddroid.fragment;
+package com.valeriymaliuk.feeddroid.presenter;
 
 /**
  * Created by taras on 9/09/2016.
